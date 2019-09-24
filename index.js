@@ -2,7 +2,7 @@
 // that you can supply to an HTTP server.
 var app = require('express')();
 var http = require('http').Server(app);
-
+var port = process.env.PORT || 3000
 // Initialize a new instance of socket.io by passing
 // the http (the HTTP server) object.
 var io = require('socket.io')(http);
@@ -31,10 +31,10 @@ io.on('connection', function(socket){           // Listen on the connection even
 });
 
 
-// http.listen(3000, function(){                     // Make the http server listen on port 3000.
-//   console.log('listening on *:3000');
-// });
+http.listen(port, function(){                     // Make the http server listen on port 3000.
+  console.log('listening on *:'+ port);
+});
 
-http.listen(process.env.PORT, function(){                     // Make the http server listen on port set for environment.
-    console.log('listening on *:' + process.env.PORT);
-  });
+// http.listen(process.env.PORT, function(){                     // Make the http server listen on port set for environment.
+//     console.log('listening on *:' + process.env.PORT);
+//   });
